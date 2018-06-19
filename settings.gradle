@@ -1,0 +1,16 @@
+include ':app'
+
+include ':UtilsLibrary'
+project(':UtilsLibrary').projectDir = new File(settingsDir, '../CaojunLibrary/UtilsLibrary')
+
+include ':CountdownLibrary'
+project(':CountdownLibrary').projectDir = new File(settingsDir, '../CaojunLibrary/CountdownLibrary')
+
+include ':WidgetLibrary'
+project(':WidgetLibrary').projectDir = new File(settingsDir, '../CaojunLibrary/WidgetLibrary')
+
+include ':StopwatchLibrary'
+project(':StopwatchLibrary').projectDir = new File(settingsDir, '../CaojunLibrary/StopwatchLibrary')
+
+include ':ParticleLibrary'
+project(':ParticleLibrary').projectDir = new File(settingsDir, '../CaojunLibrary/ParticleLibrary')
