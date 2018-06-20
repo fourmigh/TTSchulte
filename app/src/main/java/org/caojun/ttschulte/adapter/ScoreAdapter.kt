@@ -15,13 +15,12 @@ import org.caojun.utils.TimeUtils
 /**
  * Created by CaoJun on 2018-1-16.
  */
-class ScoreAdapter : BaseAdapter {
-    private var context: Context? = null
+class ScoreAdapter(context: Context, list: List<Score>?) : BaseAdapter() {
+    private var context: Context? = context
     private val list = ArrayList<Score>()
     private val imei: String
 
-    constructor(context: Context, list: List<Score>?) : super() {
-        this.context = context
+    init {
         setData(list)
         imei = DeviceUtils.getIMEI(context)
     }
@@ -34,7 +33,7 @@ class ScoreAdapter : BaseAdapter {
     }
 
     override fun getView(position: Int, convertView: View?, viewGrouop: ViewGroup?): View {
-        var holder: ViewHolder
+        val holder: ViewHolder
         var view = convertView
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_score, null)
@@ -51,9 +50,9 @@ class ScoreAdapter : BaseAdapter {
         val data = getItem(position)
         holder.tvTime?.text = TimeUtils.getTime("yyyy/MM/dd HH:mm:ss", data.time)
         holder.tvName?.text = data.name
-        holder.tvScore?.text = context!!.getString(R.string.score_time, DigitUtils.getRound(data.score, 3))
+        holder.tvScore?.text = context?.getString(R.string.score_time, DigitUtils.getRound(data.score, 3))
         if (imei == data.imei) {
-            holder.tvMe?.setText(data.name[0].toString())
+            holder.tvMe?.text = data.name[0].toString()
             holder.tvMe?.visibility = View.VISIBLE
         } else {
             holder.tvMe?.visibility = View.INVISIBLE

@@ -83,9 +83,13 @@ class ScoreListActivity : AppCompatActivity() {
             return null
         }
 
-        //过滤非本月数据
         val filters = ArrayList<ScoreBmob>()
-        for (i in 0 until list.size) {
+
+        //保留最好成成绩
+        filters.add(list[0])
+
+        //过滤非本月数据
+        for (i in 1 until list.size) {
             val time = list[i].time
             val date = TimeUtils.getDate(time)
             if (TimeUtils.isThisMonth(date)) {
@@ -94,7 +98,6 @@ class ScoreListActivity : AppCompatActivity() {
         }
 
         val scores = ArrayList<Score>()
-//        list.indices.mapTo(scores) { Score(list[it]) }
         filters.indices.mapTo(scores) { Score(filters[it]) }
         return scores
     }
