@@ -116,10 +116,14 @@ class SchulteActivity : BaseAppCompatActivity() {
         val root = getRoot()
         ViewUtils.findButtons(root, buttons)
         stopwatch.reset()
-        Collections.shuffle(buttons)
+//        Collections.shuffle(buttons)
+        buttons.shuffle()
         doAsync {
             val chars = Schulte.getChars(this@SchulteActivity, LayoutIndex, TypeIndex, ChineseIndex)
             uiThread {
+                for (i in 0 until buttons.size) {
+                    buttons[i].visibility = View.INVISIBLE
+                }
                 for (i in 0 until chars.size) {
                     buttons[i].isEnabled = true
                     buttons[i].text = chars[i]

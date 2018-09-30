@@ -17,6 +17,7 @@ import org.caojun.ttschulte.R
 import org.caojun.ttschulte.utils.Schulte
 import org.caojun.utils.DataStorageUtils
 import org.caojun.utils.RandomUtils
+import org.caojun.widget.MultiRadioGroup
 import org.jetbrains.anko.*
 
 /**
@@ -33,8 +34,8 @@ class GameActivity : AppCompatActivity() {
         setContentView(R.layout.activity_game)
 
         btnPlay.setOnClickListener {
-            val layout = rgLayout.indexOfChild(rgLayout.findViewById(rgLayout.checkedRadioButtonId))
-            val type = rgType.indexOfChild(rgType.findViewById(rgType.checkedRadioButtonId))
+            val layout = rgLayout.indexOfChild(rgLayout.findViewById(rgLayout.getCheckedRadioButtonId()))
+            val type = rgType.indexOfChild(rgType.findViewById(rgType.getCheckedRadioButtonId()))
             val layoutName = (rgLayout.getChildAt(layout) as RadioButton).text.toString()
             val typeName = (rgType.getChildAt(type) as RadioButton).text.toString()
             startActivityForResult<SchulteActivity>(RequestCode_Game, Constant.Key_Layout to layout, Constant.Key_Type to type, Constant.Key_LayoutName to layoutName, Constant.Key_TypeName to typeName, Constant.Key_Chinese to ChineseIndex)
@@ -48,21 +49,41 @@ class GameActivity : AppCompatActivity() {
             gotoScoreList(false)
         }
 
-        rgType.setOnCheckedChangeListener { _, _ ->
-            val type = rgType.indexOfChild(rgType.findViewById(rgType.checkedRadioButtonId))
-            if (type == Schulte.Type_Chinese) {
-                initChinese()
-            } else {
-                tvChinese.visibility = View.GONE
+        rgType.setOnCheckedChangeListener(object : MultiRadioGroup.OnCheckedChangeListener {
+            override fun onCheckedChanged(group: MultiRadioGroup, checkedId: Int) {
+                val type = rgType.indexOfChild(rgType.findViewById(rgType.getCheckedRadioButtonId()))
+                if (type == Schulte.Type_Chinese) {
+                    initChinese()
+                } else {
+                    tvChinese.visibility = View.GONE
+                }
             }
-        }
+        })
 
-        rgLayout.setOnCheckedChangeListener { _, _ ->
-            val type = rgType.indexOfChild(rgType.findViewById(rgType.checkedRadioButtonId))
-            if (type == Schulte.Type_Chinese) {
-                initChinese()
+//        rgType.setOnCheckedChangeListener { _, _ ->
+//            val type = rgType.indexOfChild(rgType.findViewById(rgType.getCheckedRadioButtonId()))
+//            if (type == Schulte.Type_Chinese) {
+//                initChinese()
+//            } else {
+//                tvChinese.visibility = View.GONE
+//            }
+//        }
+
+        rgLayout.setOnCheckedChangeListener(object : MultiRadioGroup.OnCheckedChangeListener {
+            override fun onCheckedChanged(group: MultiRadioGroup, checkedId: Int) {
+                val type = rgType.indexOfChild(rgType.findViewById(rgType.getCheckedRadioButtonId()))
+                if (type == Schulte.Type_Chinese) {
+                    initChinese()
+                }
             }
-        }
+        })
+
+//        rgLayout.setOnCheckedChangeListener { _, _ ->
+//            val type = rgType.indexOfChild(rgType.findViewById(rgType.getCheckedRadioButtonId()))
+//            if (type == Schulte.Type_Chinese) {
+//                initChinese()
+//            }
+//        }
 
         tvChinese.setOnClickListener {
             initChinese()
@@ -71,15 +92,15 @@ class GameActivity : AppCompatActivity() {
 
     private fun initChinese() {
         tvChinese.visibility = View.VISIBLE
-        val layout = rgLayout.indexOfChild(rgLayout.findViewById(rgLayout.checkedRadioButtonId))
+        val layout = rgLayout.indexOfChild(rgLayout.findViewById(rgLayout.getCheckedRadioButtonId()))
         val strings = resources.getStringArray(Constant.ChineseArrays[layout])
         ChineseIndex = RandomUtils.getRandom(0, strings.size - 1)
         tvChinese.text = strings[ChineseIndex]
     }
 
     private fun gotoScoreList(isLocal: Boolean) {
-        val layout = rgLayout.indexOfChild(rgLayout.findViewById(rgLayout.checkedRadioButtonId))
-        val type = rgType.indexOfChild(rgType.findViewById(rgType.checkedRadioButtonId))
+        val layout = rgLayout.indexOfChild(rgLayout.findViewById(rgLayout.getCheckedRadioButtonId()))
+        val type = rgType.indexOfChild(rgType.findViewById(rgType.getCheckedRadioButtonId()))
         val title = if (isLocal) getString(R.string.my_score) else getString(R.string.online_score)
         startActivityForResult<ScoreListActivity>(RequestCode_ScoreList, Constant.Key_Layout to layout, Constant.Key_Type to type, Constant.Key_IsLocal to isLocal, Constant.Key_Title to title)
     }
@@ -114,8 +135,8 @@ class GameActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        val layout = rgLayout.indexOfChild(rgLayout.findViewById(rgLayout.checkedRadioButtonId))
-        val type = rgType.indexOfChild(rgType.findViewById(rgType.checkedRadioButtonId))
+        val layout = rgLayout.indexOfChild(rgLayout.findViewById(rgLayout.getCheckedRadioButtonId()))
+        val type = rgType.indexOfChild(rgType.findViewById(rgType.getCheckedRadioButtonId()))
         DataStorageUtils.saveInt(this, Constant.Key_Layout, layout)
         DataStorageUtils.saveInt(this, Constant.Key_Type, type)
     }

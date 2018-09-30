@@ -8,7 +8,7 @@ import org.caojun.ttschulte.R
 /**
  * Created by CaoJun on 2017/9/25.
  */
-class SettingsActivity: AppCompatActivity() {
+class SettingsActivity: BaseActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -8,36 +8,47 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content">
 
         <include layout="@layout/layout_type"/>
     </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnMyScore"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/my_score" />
+        <org.caojun.widget.AutofitLayout
+            style="@style/AutofitLayout">
+            <Button
+                android:id="@+id/btnMyScore"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/my_score" />
+        </org.caojun.widget.AutofitLayout>
 
-        <Button
-            android:id="@+id/btnOnlineScore"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/online_score" />
+        <org.caojun.widget.AutofitLayout
+            style="@style/AutofitLayout">
+            <Button
+                android:id="@+id/btnOnlineScore"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/online_score" />
+        </org.caojun.widget.AutofitLayout>
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnPlay"
+    <org.caojun.widget.AutofitLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/play" />
+        android:layout_height="0dp"
+        android:layout_weight="2">
+        <Button
+            android:id="@+id/btnPlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/play" />
+    </org.caojun.widget.AutofitLayout>
+
 
 </LinearLayout>

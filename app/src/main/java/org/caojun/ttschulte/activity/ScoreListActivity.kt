@@ -17,13 +17,14 @@ import org.caojun.ttschulte.room.ScoreBmob
 import org.caojun.ttschulte.room.TTSDatabase
 import org.caojun.ttschulte.utils.Schulte
 import org.caojun.utils.TimeUtils
+import org.caojun.widget.MultiRadioGroup
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 /**
  * Created by CaoJun on 2018-1-16.
  */
-class ScoreListActivity : AppCompatActivity() {
+class ScoreListActivity : BaseActivity() {
 
     private var layout = 0
     private var type = 0
@@ -32,6 +33,7 @@ class ScoreListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_score_list)
+
         tvChinese.visibility = View.GONE
 
         this.title = intent.getStringExtra(Constant.Key_Title)
@@ -41,15 +43,29 @@ class ScoreListActivity : AppCompatActivity() {
         isLocal = intent.getBooleanExtra(Constant.Key_IsLocal, true)
         readData()
 
-        rgLayout.setOnCheckedChangeListener { radioGroup, i ->
-            layout = radioGroup.indexOfChild(radioGroup.findViewById(i))
-            readData()
-        }
+        rgLayout.setOnCheckedChangeListener(object : MultiRadioGroup.OnCheckedChangeListener {
+            override fun onCheckedChanged(group: MultiRadioGroup, checkedId: Int) {
+                layout = group.indexOfChild(group.findViewById(checkedId))
+                readData()
+            }
+        })
 
-        rgType.setOnCheckedChangeListener { radioGroup, i ->
-            type = radioGroup.indexOfChild(radioGroup.findViewById(i))
-            readData()
-        }
+//        rgLayout.setOnCheckedChangeListener { radioGroup, i ->
+//            layout = radioGroup.indexOfChild(radioGroup.findViewById(i))
+//            readData()
+//        }
+
+        rgType.setOnCheckedChangeListener(object : MultiRadioGroup.OnCheckedChangeListener {
+            override fun onCheckedChanged(group: MultiRadioGroup, checkedId: Int) {
+                type = group.indexOfChild(group.findViewById(checkedId))
+                readData()
+            }
+        })
+
+//        rgType.setOnCheckedChangeListener { radioGroup, i ->
+//            type = radioGroup.indexOfChild(radioGroup.findViewById(i))
+//            readData()
+//        }
     }
 
     private fun readData() {
