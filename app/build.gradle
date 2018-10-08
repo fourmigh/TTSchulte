@@ -11,8 +11,8 @@ android {
         applicationId "org.caojun.ttschulte"
         minSdkVersion 19
         targetSdkVersion rootProject.ext.sdkVersion
-        versionCode 8
-        versionName "1.3.2"
+        versionCode 9
+        versionName "1.3.3"
 
     }
 

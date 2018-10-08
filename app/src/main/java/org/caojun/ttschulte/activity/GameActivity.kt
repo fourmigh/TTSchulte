@@ -145,8 +145,10 @@ class GameActivity : AppCompatActivity() {
         super.onResume()
         val layout = DataStorageUtils.loadInt(this, Constant.Key_Layout, Schulte.Layout_9)
         val type = DataStorageUtils.loadInt(this, Constant.Key_Type, Schulte.Type_Natural)
-        (rgLayout.getChildAt(layout) as RadioButton).isChecked = true
-        (rgType.getChildAt(type) as RadioButton).isChecked = true
+//        (rgLayout.getChildAt(layout) as RadioButton).isChecked = true
+//        (rgType.getChildAt(type) as RadioButton).isChecked = true
+        rgLayout.setCheckWithoutNotif(layout)
+        rgType.setCheckWithoutNotif(type)
         doAskName()
     }
 
