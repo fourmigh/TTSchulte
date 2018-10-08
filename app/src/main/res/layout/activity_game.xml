@@ -25,6 +25,8 @@
                 android:id="@+id/btnMyScore"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:textSize="24sp"
+                android:singleLine="true"
                 android:text="@string/my_score" />
         </org.caojun.widget.AutofitLayout>
 
@@ -34,6 +36,8 @@
                 android:id="@+id/btnOnlineScore"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:textSize="24sp"
+                android:singleLine="true"
                 android:text="@string/online_score" />
         </org.caojun.widget.AutofitLayout>
 
@@ -47,6 +51,8 @@
             android:id="@+id/btnPlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textSize="64sp"
+            android:singleLine="true"
             android:text="@string/play" />
     </org.caojun.widget.AutofitLayout>
 

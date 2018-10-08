@@ -43,34 +43,20 @@ class ScoreListActivity : BaseActivity() {
         isLocal = intent.getBooleanExtra(Constant.Key_IsLocal, true)
         readData()
 
-        rgLayout.setOnCheckedChangeListener(object : MultiRadioGroup.OnCheckedChangeListener {
-            override fun onCheckedChanged(group: MultiRadioGroup, checkedId: Int) {
-                layout = group.indexOfChild(group.findViewById(checkedId))
-                readData()
-            }
-        })
+        rgLayout.setOnCheckedChangeListener { group, checkedId ->
+            layout = group.indexOfChild(group.findViewById(checkedId))
+            readData()
+        }
 
-//        rgLayout.setOnCheckedChangeListener { radioGroup, i ->
-//            layout = radioGroup.indexOfChild(radioGroup.findViewById(i))
-//            readData()
-//        }
-
-        rgType.setOnCheckedChangeListener(object : MultiRadioGroup.OnCheckedChangeListener {
-            override fun onCheckedChanged(group: MultiRadioGroup, checkedId: Int) {
-                type = group.indexOfChild(group.findViewById(checkedId))
-                readData()
-            }
-        })
-
-//        rgType.setOnCheckedChangeListener { radioGroup, i ->
-//            type = radioGroup.indexOfChild(radioGroup.findViewById(i))
-//            readData()
-//        }
+        rgType.setOnCheckedChangeListener { group, checkedId ->
+            type = group.indexOfChild(group.findViewById(checkedId))
+            readData()
+        }
     }
 
     private fun readData() {
-        (rgLayout.getChildAt(layout) as RadioButton).isChecked = true
-        (rgType.getChildAt(type) as RadioButton).isChecked = true
+        rgLayout.getChildRadioButtonAt(layout).isChecked = true
+        rgType.getChildRadioButtonAt(type).isChecked = true
 
         doAsync {
             if (isLocal) {
