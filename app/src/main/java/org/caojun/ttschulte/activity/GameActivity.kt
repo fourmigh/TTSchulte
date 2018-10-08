@@ -50,7 +50,7 @@ class GameActivity : AppCompatActivity() {
         }
 
         rgType.setOnCheckedChangeListener { group, checkedId ->
-            val type = group.indexOfChild(rgType.findViewById(checkedId))
+            val type = group.indexOfChild(group.findViewById(checkedId))
             if (type == Schulte.Type_Chinese) {
                 initChinese()
             } else {
@@ -58,28 +58,12 @@ class GameActivity : AppCompatActivity() {
             }
         }
 
-//        rgType.setOnCheckedChangeListener { _, _ ->
-//            val type = rgType.indexOfChild(rgType.findViewById(rgType.getCheckedRadioButtonId()))
-//            if (type == Schulte.Type_Chinese) {
-//                initChinese()
-//            } else {
-//                tvChinese.visibility = View.GONE
-//            }
-//        }
-
-        rgLayout.setOnCheckedChangeListener { group, checkedId ->
-            val type = rgType.indexOfChild(group.findViewById(checkedId))
+        rgLayout.setOnCheckedChangeListener { _, _ ->
+            val type = rgType.indexOfChild(rgType.findViewById(rgType.checkedRadioButtonId))
             if (type == Schulte.Type_Chinese) {
                 initChinese()
             }
         }
-
-//        rgLayout.setOnCheckedChangeListener { _, _ ->
-//            val type = rgType.indexOfChild(rgType.findViewById(rgType.getCheckedRadioButtonId()))
-//            if (type == Schulte.Type_Chinese) {
-//                initChinese()
-//            }
-//        }
 
         tvChinese.setOnClickListener {
             initChinese()
