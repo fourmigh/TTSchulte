@@ -36,4 +36,6 @@
     <string name="countdown_title">倒计时数</string>
     <string name="upload_ok">上传成绩成功。</string>
     <string name="upload_error">上传成绩失败：%s</string>
+    <string name="switch_welcome">欢迎动画</string>
+    <string name="skip">跳过</string>
 </resources>

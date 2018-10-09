@@ -35,4 +35,6 @@
     <string name="countdown_title">Countdown</string>
     <string name="upload_ok">Upload score ok.</string>
     <string name="upload_error">Upload score error: %s</string>
+    <string name="switch_welcome">Welcome Animation</string>
+    <string name="skip">Skip</string>
 </resources>

@@ -12,4 +12,9 @@
         android:title="@string/countdown_title"
         android:max="10"/>
 
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="Key_Switch_Welcome"
+        android:title="@string/switch_welcome" />
+
 </PreferenceScreen>

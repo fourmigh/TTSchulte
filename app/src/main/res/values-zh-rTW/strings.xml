@@ -36,4 +36,6 @@
     <string name="countdown_title">倒數計時數</string>
     <string name="upload_ok">上傳成績成功。</string>
     <string name="upload_error">上傳成績失敗：%s</string>
+    <string name="switch_welcome">歡迎動畫</string>
+    <string name="skip">跳過</string>
 </resources>

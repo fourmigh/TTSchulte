@@ -13,6 +13,7 @@ object Constant {
     val Key_IsLocal = "Key_IsLocal"
     val Key_Countdown_Time = "Key_Countdown_Time"
     val Key_Chinese = "Key_Chinese"
+    val Key_Switch_Welcome = "Key_Switch_Welcome"
 
     val ChineseArrays = arrayOf(R.array.chinese9, R.array.chinese16, R.array.chinese25, R.array.chinese36)
 }

@@ -4,14 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    xmlns:autofit="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.GameActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
-        <include layout="@layout/layout_type"/>
-    </ScrollView>
+        <!--<include layout="@layout/layout_type"/>-->
+    <!--</ScrollView>-->
+    <include layout="@layout/layout_type"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +27,7 @@
                 android:id="@+id/btnMyScore"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="24sp"
+                android:textSize="32sp"
                 android:singleLine="true"
                 android:text="@string/my_score" />
         </org.caojun.widget.AutofitLayout>
@@ -36,7 +38,7 @@
                 android:id="@+id/btnOnlineScore"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="24sp"
+                android:textSize="32sp"
                 android:singleLine="true"
                 android:text="@string/online_score" />
         </org.caojun.widget.AutofitLayout>
@@ -51,7 +53,7 @@
             android:id="@+id/btnPlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="64sp"
+            android:textSize="80sp"
             android:singleLine="true"
             android:text="@string/play" />
     </org.caojun.widget.AutofitLayout>
